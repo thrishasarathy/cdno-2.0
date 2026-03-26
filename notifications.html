@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CDNO | My Noti Board</title>
+
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+
+  <link rel="stylesheet" href="./css/dashboard.css" />
+</head>
+<body>
+
+
+  <div class="app-shell">
+
+
+    <div class="mobile-topbar">
+      <div class="mobile-brand">
+        <div class="brand-mark"><img src="./assets/logo.jpg" alt="CDNO Logo" /></div>
+        <div>
+          <h2>CDNO</h2>
+          <p>My Noti Board</p>
+        </div>
+      </div>
+    </div>
+
+
+    <aside class="sidebar">
+      <div class="sidebar-top">
+        <div class="sidebar-brand">
+          <div class="brand-mark"><img src="./assets/logo.jpg" alt="CDNO Logo" /></div>
+          <div>
+            <h2>CDNO</h2>
+            <p>My Noti Board</p>
+          </div>
+        </div>
+
+
+        <nav class="sidebar-nav">
+          <a href="#dashboard">Dashboard</a>
+          <a href="#filters">Filters</a>
+          <a href="#rankings">Rankings</a>
+          <a href="#history">History</a>
+          <a href="#profile">Profile</a>
+        </nav>
+
+
+        <div class="mode-panel">
+          <p>Context Mode</p>
+          <div class="mode-buttons">
+            <button class="mode-btn active" data-mode="work">Work</button>
+            <button class="mode-btn" data-mode="sleep">Sleep</button>
+            <button class="mode-btn" data-mode="weekend">Weekend</button>
+          </div>
+        </div>
+      </div>
+      <div class="sidebar-footer">
+        <button class="secondary-btn full-btn" id="goProfileBtn">Open Profile</button>
+        <button class="secondary-btn full-btn danger-btn" id="logoutBtn">Logout</button>
+      </div>
+    </aside>
+
+
+    <main class="main-content">
+      <section class="topbar" id="dashboard">
+        <div class="topbar-left">
+          <h1>Notification Intelligence Dashboard</h1>
+          <p id="welcomeText">Ranked and filtered based on your selected context.</p>
+        </div>
+
+
+        <div class="topbar-actions">
+          <button class="secondary-btn" id="refreshBtn">Refresh Feed</button>
+          <button class="primary-btn" id="runEngineBtn">Run Optimizer</button>
+        </div>
+      </section>
+
+
+      <section class="summary-grid">
+        <div class="summary-card">
+          <h3 id="totalCount">0</h3>
+          <p>Total Notifications</p>
+        </div>
+        <div class="summary-card">
+          <h3 id="unreadCount">0</h3>
+          <p>Unread Alerts</p>
+        </div>
+        <div class="summary-card">
+          <h3 id="optimizedCount">0</h3>
+          <p>High Priority</p>
+        </div>
+        <div class="summary-card">
+          <h3 id="hiddenNoiseCount">0</h3>
+          <p>Suppressed Noise</p>
+        </div>
+      </section>
+
+
+      <section class="panel" id="filters">
+        <div class="panel-head">
+          <div>
+            <h2>Filters & Optimization</h2>
+            <p>Customize how alerts are ranked and filtered.</p>
+          </div>
+        </div>
+
+
+        <div class="controls-grid">
+          <div class="control-box">
+            <label for="searchInput">Search</label>
+            <input type="text" id="searchInput" placeholder="Search title, source, category..." />
+          </div>
+
+
+          <div class="control-box">
+            <label for="categoryFilter">Category</label>
+            <select id="categoryFilter">
+              <option value="all">All Categories</option>
+              <option value="academic">Academic</option>
+              <option value="career">Career</option>
+              <option value="social">Social</option>
+              <option value="finance">Finance</option>
+              <option value="utility">Utility</option>
+              <option value="travel">Travel</option>
+              <option value="spam">Spam</option>
+              <option value="gaming">Gaming</option>
+            </select>
+          </div>
+
+
+          <div class="control-box">
+            <label for="priorityFilter">Priority</label>
+            <select id="priorityFilter">
+              <option value="all">All Priorities</option>
+              <option value="HIGH">High</option>
+              <option value="MEDIUM">Medium</option>
+              <option value="LOW">Low</option>
+            </select>
+          </div>
+
+
+          <div class="control-box">
+            <label for="sortMode">Sort By</label>
+            <select id="sortMode">
+              <option value="priority">Priority</option>
+              <option value="category">Category</option>
+              <option value="source">Source</option>
+              <option value="recent">Recent First</option>
+            </select>
+          </div>
+
+
+          <div class="control-box full-span">
+            <label for="keywordInput">Keyword Boost</label>
+            <input type="text" id="keywordInput" placeholder="exam, marks, placement, interview, anna university..." />
+          </div>
+        </div>
+
+
+        <div class="toggle-row">
+          <label class="toggle-wrap">
+            <input type="checkbox" id="autoSortToggle" />
+            <span>Enable Automated Ranking</span>
+          </label>
+
+
+          <button class="secondary-btn" id="saveKeywordBtn">Save Keywords</button>
+        </div>
+      </section>
+
+
+      <section class="panel" id="rankings">
+        <div class="panel-head">
+          <div>
+            <h2>Ranked Notifications</h2>
+            <p>Important alerts rise. Junk gets buried.</p>
+          </div>
+        </div>
+
+
+        <div id="notificationList" class="notification-list"></div>
+      </section>
+
+
+      <section class="panel" id="history">
+        <div class="panel-head">
+          <div>
+            <h2>Optimization History</h2>
+            <p>Recent ranking and feed processing sessions.</p>
+          </div>
+        </div>
+
+
+        <div id="historyList" class="history-list"></div>
+      </section>
+
+
+      <section class="panel" id="profile">
+        <div class="panel-head">
+          <div>
+            <h2>User Profile Snapshot</h2>
+            <p>Your personalization and connected account overview.</p>
+          </div>
+        </div>
+
+
+        <div class="profile-grid">
+          <div class="profile-card">
+            <h3 id="profileUserName">User</h3>
+            <p id="profileUserEmail">No email</p>
+            <p id="profileUserPhone">Phone not added</p>
+            <p id="profileUserPrivacy">Private Profile</p>
+          </div>
+
+
+          <div class="profile-card">
+            <h3>Connected Platforms</h3>
+            <ul>
+              <li id="profileInstagram">Instagram: Not connected</li>
+              <li id="profileWhatsapp">WhatsApp: Not connected</li>
+              <li>Notification Engine: Active</li>
+              <li>Personalization Layer: Enabled</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+
+    </main>
+  </div>
+
+
+  <script src="./js/database.js"></script>
+  <script src="./js/auth.js"></script>
+  <script src="./js/dashboard.js"></script>
+</body>
+</html>
