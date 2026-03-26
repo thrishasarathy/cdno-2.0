@@ -1,3 +1,17 @@
+# CDNO 2.0
+## Context-Dependent Notification Optimizer
+
+CDNO is an advanced smart notification optimization platform that helps users manage attention by ranking, filtering, and personalizing notifications based on urgency, relevance, and user context.
+
+This version includes:
+- User authentication
+- Personalized profile system
+- Protected dashboard
+- Smart notification ranking engine
+- Context-based filtering
+- LocalStorage persistence
+- Mobile-friendly responsive design
+
 Project Type:
 Static web application with localStorage-based authentication and personalized notification dashboard.
 
